@@ -103,7 +103,16 @@ program
                     meta = parts[2] + '/' + parts[3].split('.')[0];
                 } else {
                     // Processing metadata without nested folders. Strip -meta from the end.
-                    meta = parts[2].split('.')[0].replace('-meta', '');
+                    var metaParts = parts[2].split('.');
+                    // Handle multiple periods in the name
+                    if (metaParts.length > 2)
+                    { // e.g. Case.SendEmail.quickAction
+                        meta = metaParts[0] + '.' + metaParts[1];
+                    }
+                    else
+                    { // 
+                        meta = metaParts[0];
+                    }
                 }
 
                 if (operation === 'A' || operation === 'M') {
