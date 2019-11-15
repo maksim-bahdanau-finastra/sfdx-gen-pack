@@ -111,8 +111,9 @@ program
                     }
                     else
                     { // 
-                        meta = metaParts[0].replace('-meta','');
+                        meta = metaParts[0];
                     }
+                    meta = meta.replace('-meta','');
                 }
 
                 if (operation === 'A' || operation === 'M') {
