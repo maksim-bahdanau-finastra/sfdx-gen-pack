@@ -111,7 +111,7 @@ program
                     }
                     else
                     { // 
-                        meta = metaParts[0];
+                        meta = metaParts[0].replace('-meta','');
                     }
                 }
 
