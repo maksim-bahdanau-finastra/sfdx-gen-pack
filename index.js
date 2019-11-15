@@ -105,7 +105,7 @@ program
                     // Processing metadata without nested folders. Strip -meta from the end.
                     var metaParts = parts[2].split('.');
                     // Handle multiple periods in the name
-                    if (metaParts.length > 2)
+                    if (metaParts.length > 3)
                     { // e.g. Case.SendEmail.quickAction
                         meta = metaParts[0] + '.' + metaParts[1];
                     }
