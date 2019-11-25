@@ -94,11 +94,7 @@ program
                 }
 
                 var meta;
-
-                //console.log('part 4');
-                //console.log(parts[4]);
-                
-                if (parts.length === 4) {
+                if (parts.length === 4 ) {
                     // Processing metadata with nested folders e.g. emails, documents, reports
                     meta = parts[2] + '/' + parts[3].split('.')[0];
                 } else {
@@ -115,17 +111,16 @@ program
                     }
                     meta = meta.replace('-meta','');
                 }
-
-                if (operation === 'A' || operation === 'M') {
-                    // file was added or modified - add fileName to array for unpackaged and to be copied
-                    console.log('File was added or modified: %s', fileName);
-                    fileName = fileName.replace('src/','force-app/main/default/');
+                
+                if (operation === 'R') {
+                    // File was renamed
+                    var files = fileName.split(' ');
+                    
+                    console.log('File was renamed from: %s to %s', files[0], files[1]);
+                    
+                    // file was  modified - add fileName to array for unpackaged and to be copied
+                    fileName = files[1].replace('src/','force-app/main/default/');
                     fileListForCopy.push(fileName);
-                    //console.log('*******');
-                    //console.log(parts[1]);
-
-                    //console.log('*******');
-                    //console.log(metaBag);
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
                         metaBag[parts[1]] = [];
@@ -134,7 +129,29 @@ program
                     if (metaBag[parts[1]].indexOf(meta) === -1) {
                         metaBag[parts[1]].push(meta);
                     }
-                    //console.log(metaBag);
+                    deletesHaveOccurred = true;
+
+                    if (!metaBagDestructive.hasOwnProperty(files[0])) {
+                        metaBagDestructive[parts[1]] = [];
+                    }
+
+                    if (metaBagDestructive[parts[1]].indexOf(meta) === -1) {
+                        metaBagDestructive[parts[1]].push(meta);
+                    } 
+                }
+                else if (operation === 'A' || operation === 'M') {
+                    // file was added or modified - add fileName to array for unpackaged and to be copied
+                    console.log('File was added or modified: %s', fileName);
+                    fileName = fileName.replace('src/','force-app/main/default/');
+                    fileListForCopy.push(fileName);
+
+                    if (!metaBag.hasOwnProperty(parts[1])) {
+                        metaBag[parts[1]] = [];
+                    }
+
+                    if (metaBag[parts[1]].indexOf(meta) === -1) {
+                        metaBag[parts[1]].push(meta);
+                    }
 
                 } else if (operation === 'D') {
                     // file was deleted
@@ -147,7 +164,8 @@ program
 
                     if (metaBagDestructive[parts[1]].indexOf(meta) === -1) {
                         metaBagDestructive[parts[1]].push(meta);
-                    }
+                    } 
+
                 } else {
                     // situation that requires review
                     return console.error('Operation on file needs review: %s', fileName);
