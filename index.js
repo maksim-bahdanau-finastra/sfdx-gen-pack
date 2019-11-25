@@ -131,7 +131,7 @@ program
                     }
                     deletesHaveOccurred = true;
 
-                    if (!metaBagDestructive.hasOwnProperty(files[0])) {
+                    if (!metaBagDestructive.hasOwnProperty(parts[1])) {
                         metaBagDestructive[parts[1]] = [];
                     }
 
