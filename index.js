@@ -114,7 +114,7 @@ program
                 
                 if (operation === 'R') {
                     // File was renamed
-                    var files = fileName.split(' ');
+                    var files = fileName.split('.xml ');
                     
                     console.log('File was renamed from: %s to %s', files[0], files[1]);
                     
