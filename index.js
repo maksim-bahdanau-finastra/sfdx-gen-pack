@@ -123,19 +123,27 @@ program
                 }
 
                 if (operation === "R") {
+                    var suffix = "xml";
                     // File was renamed
-                    var files = fileName.split("xml");
-
-                    console.log(
-                        "File : %s was renamed to: %s",
-                        files[0],
-                        files[1]
-                    );
-                    fileName = files[1]
-                        .replace("src/", "force-app/main/default/")
-                        .trim();
-                    fileListForCopy.push(fileName + "xml");
-
+                    if ( fileName.split(suffix) == 1) {
+                        suffix = "cls";
+                    }
+                    var files = fileName.split(suffix);
+                    if (files.length > 1) {
+                        console.log(
+                            "File : %s was renamed to: %s",
+                            files[0],
+                            files[1]
+                        );
+                        fileName = files[1]
+                            .replace("src/", "force-app/main/default/")
+                            .trim();
+                        fileListForCopy.push(fileName + suffix);
+                    }
+                    else 
+                    {
+                        return;
+                    }
                     if (!metaBag.hasOwnProperty(parts[1])) {
                         metaBag[parts[1]] = [];
                     }
