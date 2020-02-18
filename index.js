@@ -171,6 +171,12 @@ program
                         "force-app/main/default/"
                     );
                     fileListForCopy.push(fileName);
+                    
+                    var suffix = fileName.split(".")[1];
+                    if (parts[1] === "aura" && suffix !== "cmp")
+                    { // Add the cmp 
+                         fileListForCopy.push(fileName.split(".")[0] + ".cmp");
+                    }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
                         metaBag[parts[1]] = [];
