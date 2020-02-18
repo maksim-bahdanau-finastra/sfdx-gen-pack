@@ -174,10 +174,10 @@ program
                     
                     var fileParts = fileName.split(".");
                     var suffix = fileParts[1];
-                    if (parts[1] === "aura" && suffix !== "cmp" && suffix !== "js")
+                    if (parts[1] === "aura" && suffix !== "cmp")
                     { // Add the cmp 
-                         fileListForCopy.push(fileParts[0] + ".cmp"); 
-                         fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
+                         fileListForCopy.push(parts[2] + ".cmp"); 
+                         fileListForCopy.push(parts[2] + ".cmp-meta.xml");
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
