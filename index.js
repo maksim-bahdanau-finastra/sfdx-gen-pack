@@ -180,9 +180,17 @@ program
                          fileListForCopy.push(fileParts[0] + ".cmp"); 
                          fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
                     }
-                    if (parts[1] === "lwc" && suffix !== "html")
+                    if (parts[1] === "lwc")
                     { // Add the cmp 
-                         fileListForCopy.push(fileParts[0] + ".html"); 
+                        if (suffix !== "html" && )
+                        {
+                            fileListForCopy.push(fileParts[0] + ".html"); 
+                        }
+                        if (suffix !== "js")
+                        {
+                            fileListForCopy.push(fileParts[0] + ".js"); 
+                            fileListForCopy.push(fileParts[0] + ".js-meta.xml"); 
+                        }
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
