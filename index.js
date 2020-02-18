@@ -181,8 +181,8 @@ program
                          fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
                     }
                     if (parts[1] === "lwc")
-                    { // Add the cmp 
-                        if (suffix !== "html" && )
+                    { // Add the base components 
+                        if (suffix !== "html")
                         {
                             fileListForCopy.push(fileParts[0] + ".html"); 
                         }
