@@ -175,10 +175,14 @@ program
                     var fileParts = fileName.split(".");
                     var suffix = fileParts[1];
                     if (parts[1] === "aura" && suffix !== "cmp" && 
-                        suffix.indexOf("-meta") === -1 && suffix !== "js")
+                        suffix.indexOf("-meta") === -1)
                     { // Add the cmp 
                          fileListForCopy.push(fileParts[0] + ".cmp"); 
                          fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
+                    }
+                    if (parts[1] === "lwc" && suffix !== "html")
+                    { // Add the cmp 
+                         fileListForCopy.push(fileParts[0] + ".html"); 
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
