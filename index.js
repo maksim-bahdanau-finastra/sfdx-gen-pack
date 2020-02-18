@@ -175,7 +175,7 @@ program
                     var fileParts = fileName.split(".");
                     var suffix = fileParts[1];
                     if (parts[1] === "aura" && suffix !== "cmp" && 
-                        suffix.indexOf("-meta") === -1)
+                        suffix.indexOf("-meta") === -1 && suffix !== "js")
                     { // Add the cmp 
                          fileListForCopy.push(fileParts[0] + ".cmp"); 
                          fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
