@@ -105,7 +105,7 @@ program
                 }
 
                 var meta;
-                if (parts.length === 4 && parts[1] !== "lwc" && parts[1] !== "aura") {
+                if (parts.length === 4 && parts[1] !== "lwc" && parts[1] !== "aura" && parts[1] !== "objects") {
                     // Processing metadata with nested folders e.g. emails, documents, reports
                     meta = parts[2] + "/" + parts[3].split(".")[0];
                 } else {
