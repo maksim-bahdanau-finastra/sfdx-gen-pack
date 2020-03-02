@@ -177,8 +177,8 @@ program
                     if (parts[1] === "aura" && suffix !== "cmp" && 
                         suffix.indexOf("-meta") === -1)
                     { // Add the cmp 
-                        var pathIndex = filesParts[0].lastIndexOf("/");
-                        var cmpPath = filesParts[0].substr(0, pathIndex +1) + parts[2];
+                        var pathIndex = fileParts[0].lastIndexOf("/");
+                        var cmpPath = fileParts[0].substr(0, pathIndex +1) + parts[2];
                         fileListForCopy.push(cmpPath + ".cmp"); 
                         fileListForCopy.push(cmpPath + ".cmp-meta.xml");
                     }
