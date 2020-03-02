@@ -177,8 +177,10 @@ program
                     if (parts[1] === "aura" && suffix !== "cmp" && 
                         suffix.indexOf("-meta") === -1)
                     { // Add the cmp 
-                         fileListForCopy.push(fileParts[0] + ".cmp"); 
-                         fileListForCopy.push(fileParts[0] + ".cmp-meta.xml");
+                        var pathIndex = filesParts[0].lastIndexOf("/");
+                        var cmpPath = filesParts[0].substr(0, pathIndex +1) + parts[2];
+                        fileListForCopy.push(cmpPath + ".cmp"); 
+                        fileListForCopy.push(cmpPath + ".cmp-meta.xml");
                     }
                     if (parts[1] === "lwc")
                     { // Add the base components 
