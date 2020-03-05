@@ -135,10 +135,27 @@ program
                             files[0],
                             files[1]
                         );
+                        var badPrefix = "-meta.xml ";
+                        if (files[1].startsWith(badPrefix)) {
+                            files[1] = files[1].substr(badPrefix.length);
+                        }
+
                         fileName = files[1]
                             .replace("src/", "force-app/main/default/")
                             .trim();
                         fileListForCopy.push(fileName + suffix);
+                        deletesHaveOccurred = true;
+                        var fileToDelete =
+                            files[0]
+                                .replace("src/", "force-app/main/default/")
+                                .trim() + suffix;
+                        if (!metaBagDestructive.hasOwnProperty(parts[1])) {
+                            metaBagDestructive[parts[1]] = [];
+                        }
+
+                        if (metaBagDestructive[parts[1]].indexOf(fileToDelete) === -1) {
+                            metaBagDestructive[parts[1]].push(fileToDelete);
+                        }
                     }
                     else 
                     {
@@ -153,15 +170,6 @@ program
                     var renamedFileMeta = renamedParts[1].split(".")[0];
                     if (metaBag[parts[1]].indexOf(renamedFileMeta) === -1) {
                         metaBag[parts[1]].push(renamedFileMeta);
-                    }
-                    deletesHaveOccurred = true;
-
-                    if (!metaBagDestructive.hasOwnProperty(parts[1])) {
-                        metaBagDestructive[parts[1]] = [];
-                    }
-
-                    if (metaBagDestructive[parts[1]].indexOf(meta) === -1) {
-                        metaBagDestructive[parts[1]].push(meta);
                     }
                 } else if (operation === "A" || operation === "M") {
                     // file was added or modified - add fileName to array for unpackaged and to be copied
