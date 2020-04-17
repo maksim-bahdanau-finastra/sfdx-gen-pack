@@ -190,7 +190,7 @@ program
                         fileListForCopy.push(cmpPath + ".cmp"); 
                         fileListForCopy.push(cmpPath + ".cmp-meta.xml");
                     }
-                    if (parts[1] === "lwc")
+                    else if (parts[1] === "lwc")
                     { // Add the base components 
                         if (suffix !== "html")
                         {
@@ -201,6 +201,10 @@ program
                             fileListForCopy.push(fileParts[0] + ".js"); 
                             fileListForCopy.push(fileParts[0] + ".js-meta.xml"); 
                         }
+                    }
+                    else if (parts[1] == "staticresources")
+                    { // Add the resource file
+                            fileListForCopy.push(fileParts[0] + ".resource-meta.xml"); 
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
