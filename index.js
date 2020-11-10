@@ -182,29 +182,32 @@ program
                     
                     var fileParts = fileName.split(".");
                     var suffix = fileParts[1];
-                    if (parts[1] === "aura" && suffix !== "cmp" && 
-                        suffix.indexOf("-meta") === -1)
-                    { // Add the cmp 
-                        var pathIndex = fileParts[0].lastIndexOf("/");
-                        var cmpPath = fileParts[0].substr(0, pathIndex +1) + parts[2];
-                        fileListForCopy.push(cmpPath + ".cmp"); 
-                        fileListForCopy.push(cmpPath + ".cmp-meta.xml");
-                    }
-                    else if (parts[1] === "lwc")
-                    { // Add the base components 
-                        if (suffix !== "html")
-                        {
-                            fileListForCopy.push(fileParts[0] + ".html"); 
+                    if (fileName.indexOf(".eslintrc.json") === -1)
+                    {
+                        if (parts[1] === "aura" && suffix !== "cmp" && 
+                            suffix.indexOf("-meta") === -1)
+                        { // Add the cmp 
+                            var pathIndex = fileParts[0].lastIndexOf("/");
+                            var cmpPath = fileParts[0].substr(0, pathIndex +1) + parts[2];
+                            fileListForCopy.push(cmpPath + ".cmp"); 
+                            fileListForCopy.push(cmpPath + ".cmp-meta.xml");
                         }
-                        if (suffix !== "js")
-                        {
-                            fileListForCopy.push(fileParts[0] + ".js"); 
-                            fileListForCopy.push(fileParts[0] + ".js-meta.xml"); 
+                        else if (parts[1] === "lwc")
+                        { // Add the base components 
+                            if (suffix !== "html")
+                            {
+                                fileListForCopy.push(fileParts[0] + ".html"); 
+                            }
+                            if (suffix !== "js")
+                            {
+                                fileListForCopy.push(fileParts[0] + ".js"); 
+                                fileListForCopy.push(fileParts[0] + ".js-meta.xml"); 
+                            }
                         }
-                    }
-                    else if (parts[1] == "staticresources")
-                    { // Add the resource file
-                            fileListForCopy.push(fileParts[0] + ".resource-meta.xml"); 
+                        else if (parts[1] == "staticresources")
+                        { // Add the resource file
+                                fileListForCopy.push(fileParts[0] + ".resource-meta.xml"); 
+                        }
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
