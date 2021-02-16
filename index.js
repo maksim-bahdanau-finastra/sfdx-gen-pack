@@ -184,7 +184,7 @@ program
                     var suffix = fileParts[1];
                     if (fileName.indexOf(".eslintrc.json") === -1)
                     {
-                        if (parts[1] === "aura" && suffix !== "cmp" && 
+                       /* if (parts[1] === "aura" && suffix !== "cmp" && 
                             suffix.indexOf("-meta") === -1)
                         { // Add the cmp 
                             var pathIndex = fileParts[0].lastIndexOf("/");
@@ -192,7 +192,7 @@ program
                             fileListForCopy.push(cmpPath + ".cmp"); 
                             fileListForCopy.push(cmpPath + ".cmp-meta.xml");
                         }
-                        else if (parts[1] === "lwc")
+                        else */ if (parts[1] === "lwc")
                         { // Add the base components 
                             if (suffix !== "html")
                             {
