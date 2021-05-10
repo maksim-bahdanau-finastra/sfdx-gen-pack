@@ -184,13 +184,18 @@ program
                     var suffix = fileParts[1];
                     if (fileName.indexOf(".eslintrc.json") === -1)
                     {
-                        if (parts[1] === "aura" && suffix !== "cmp" && 
+                        /*if (parts[1] === "aura" && suffix !== "cmp" && 
                             suffix.indexOf("-meta") === -1 && parts[3].split(".")[1] !== "app")
                         { // Add the cmp 
                             var pathIndex = fileParts[0].lastIndexOf("/");
                             var cmpPath = fileParts[0].substr(0, pathIndex +1) + parts[2];
                             fileListForCopy.push(cmpPath + ".cmp"); 
                             fileListForCopy.push(cmpPath + ".cmp-meta.xml");
+                        }*/
+                        if(parts[1] === "aura"){
+                            var pathIndex = fileParts[0].lastIndexOf("/");
+                            fileListForCopy.push(fileParts[0].substr(0, pathIndex)); 
+                            console.log("fileListForCopy---"+fileListForCopy);
                         }
                         else  if (parts[1] === "lwc")
                         { // Add the base components 
