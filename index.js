@@ -217,6 +217,7 @@ program
                         { // Add Experience Bundle
                             var sitePath = fileParts[0].split("/").slice(0, 5).join("/");
                             fileListForCopy.push(sitePath + ".site-meta.xml");
+                            fileListForCopy.push(sitePath);
                         }
                     }
 
