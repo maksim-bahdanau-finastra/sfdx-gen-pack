@@ -213,6 +213,11 @@ program
                         { // Add the resource file
                                 fileListForCopy.push(fileParts[0] + ".resource-meta.xml"); 
                         }
+                         else if (parts[1] == "experiences")
+                        { // Add Experience Bundle
+                            var sitePath = fileParts[0].split("/").slice(0, 5).join("/");
+                            fileListForCopy.push(sitePath + ".site-meta.xml");
+                        }
                     }
 
                     if (!metaBag.hasOwnProperty(parts[1])) {
